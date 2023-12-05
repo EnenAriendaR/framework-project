@@ -52,11 +52,12 @@ class BarangController extends Controller
             'jenis_varian' => $request -> jenis_varian,
             'qty' => $request -> qty,
             'harga_jual' => $request -> harga_jual,
-            'total_harga' => $request -> total_harga,
-            'diskon' => $request -> diskon,
-            'harga_setelah_diskon' => $request -> harga_setelah_diskon
+            'total_harga' => $total_harga,
+            'diskon' => $diskon,
+            'harga_setelah_diskon' => $harga_setelah_diskon
         ]);
 
+        /*
         return view('hasil_barang')->with([
             'kode_barang' => $kode_barang,
             'nama_barang' => $nama_barang,
@@ -67,7 +68,9 @@ class BarangController extends Controller
             'diskon' => $diskon,
             'harga_setelah_diskon' => $harga_setelah_diskon,
         ]);
-    
+        */
+        $barang = Barang::all();
+        return view('hasil_barang',compact('barang'));
     }
 
     /**
@@ -81,9 +84,9 @@ class BarangController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit( string $id)
     {
-        //
+       //
     }
 
     /**
@@ -92,6 +95,7 @@ class BarangController extends Controller
     public function update(Request $request, string $id)
     {
         //
+
     }
 
     /**

@@ -1,19 +1,50 @@
 @extends('utama')
 
 @section('hasil_barang')
-<div class="container mt-5 mb-5" align=center>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card border-0 shadow-sm rounded">
-                <div class="card-body">
-                    <h1>Hasil Input Barang</h1>
-                    <p>Kode Barang: {{ $kode_barang }}</p>
-                    <p>Nama Barang: {{ $nama_barang }}</p>
-                    <p>Jenis Varian: {{ $jenis_varian }}</p>
-                    <p>Qty: {{ $qty }}</p>
-                    <p>Harga Jual: Rp. {{ $harga_jual }}</p>
-                    <p>Total Harga: Rp. {{ $total_harga }}</p>
-                    <p>Potongan Harga:  {{ $diskon }}%</p>
-                    <p>Harga Setelah Diskon: Rp. {{ $harga_setelah_diskon }}</p>
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body" align=center>
+            <h4 class="card-title">Hasil Input Barang</h4>
+            <p class="card-description">
+                Detail pembelian barang
+            </p>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Kode Barang</th>
+                            <th> Nama Barang</th>
+                            <th>Jenis Varian</th>
+                            <th>Qty</th>
+                            <th>Harga Jual</th>
+                            <th>Total Harga</th>
+                            <th>Potongan Harga</th>
+                            <th>Harga Setelah Diskon</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($barang as $item)
+                        <tr>
+                            <td>{{ $item -> kode_barang }}</td>
+                            <td>{{ $item -> nama_barang }}</td>
+                            <td>{{ $item -> jenis_varian }}</td>
+                            <td>{{ $item -> qty }}</td>
+                            <td>{{ $item -> harga_jual }}</td>
+                            <td>{{ $item -> total_harga }}</td>
+                            <td>{{ $item -> diskon }}%</td>
+                            <td>{{ $item -> harga_setelah_diskon }}</td>
+                            <td>
+                                <button type="submit"
+                                    onclick="window.location.href='{{url('editBarang/'.$item->kode_barang)}}';"
+                                    class="btn btn-dark btn-icon-text">Edit</button>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
