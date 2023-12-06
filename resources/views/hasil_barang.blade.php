@@ -37,7 +37,13 @@
                             <td>
                                 <button type="submit"
                                     onclick="window.location.href='{{url('editBarang/'.$item->kode_barang)}}';"
-                                    class="btn btn-dark btn-icon-text">Edit</button>
+                                    class="btn btn-dark btn-icon-text">Edit
+                                    <i class="ti-file btn-icon-append"></i></button>
+
+                                <button type="submit" onclick="window.location.href='{{url('delete/'.$item->id)}}';"
+                                    class="btn btn-danger">Delete
+                                    <i class="mdi mdi-delete"></i>
+                                </button>
                             </td>
                         </tr>
                         @endforeach

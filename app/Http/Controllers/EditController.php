@@ -46,16 +46,17 @@ class EditController extends Controller
     public function editBarang(string $id)
     {
         $barang= Barang::where('kode_barang',$id)-> get();
+
         return view ('edit_barang', compact('barang'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function updateBarang(Request $request)
+    public function updateBarang(Request $request, string $id)
     {
         $data = [
-            0 => $request -> kode_barang,
+            'kode_barang' => $request -> kode_barang,
             'nama_barang' => $request -> nama_barang,
             'jenis_varian' => $request -> jenis_varian,
             'qty' => $request -> qty,
@@ -64,9 +65,9 @@ class EditController extends Controller
             'diskon' => $request -> diskon,
             'harga_setelah_diskon' => $request -> harga_setelah_diskon
         ];
-        $proses = Barang::find($data[0])->updateBarang($data);
+        $Barang = Barang::find($id)->update($data);
 
-        return view ('hasil_barang', compact('proses'));
+        return redirect('/view') -> with('success', 'Data berhasil disimpan');
     }
 
     /**
@@ -74,6 +75,7 @@ class EditController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Barang::find($id)->delete();
+        return redirect('/view') -> with('success', 'Data berhasil disimpan');
     }
 }

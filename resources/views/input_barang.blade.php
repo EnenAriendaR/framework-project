@@ -35,12 +35,7 @@
                         placeholder="Harga Jual">
 
                 </div>
-                <div class="form-check form-check-flat form-check-primary">
-                    <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input">
-                        Remember me
-                    </label>
-                </div>
+ 
                 <button type="submit" class="btn btn-primary me-2">Proses</button>
             </form>
         </div>
